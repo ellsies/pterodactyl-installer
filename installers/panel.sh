@@ -98,6 +98,12 @@ fi
 
 install_composer() {
   output "Installing composer.."
+  echo "----------------------------------------------------"
+  echo "DEBUG: Checking environment before composer install"
+  echo "The LD_PRELOAD variable is: '$LD_PRELOAD'"
+  echo "Checking for preload file again: "
+  ls -l /etc/ld.so.preload || echo "/etc/ld.so.preload does not exist at this moment."
+  echo "----------------------------------------------------"
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
   success "Composer installed!"
 }
